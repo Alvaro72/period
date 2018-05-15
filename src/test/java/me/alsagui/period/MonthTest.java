@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.junit.Test;
 
@@ -54,12 +55,20 @@ public class MonthTest {
 
 	@Test
 	public final void testGetStartDate() {
-		fail("Not yet implemented"); // TODO
+		Date date = new Date();
+		Month d = new Month(date);
+		// Check immutability
+		d.getStartDate().setYear(1900);
+		assertEquals(sdf.format(date), sdf.format(d.getStartDate()));
 	}
 
 	@Test
 	public final void testGetEndDate() {
-		fail("Not yet implemented"); // TODO
+		Date date = new Date();
+		Month d = new Month(date);
+		// Check immutability
+		d.getStartDate().setYear(1900);
+		assertEquals(sdf.format(date), sdf.format(d.getEndDate()));
 	}
 
 	@Test
