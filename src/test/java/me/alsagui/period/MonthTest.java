@@ -31,7 +31,12 @@ public class MonthTest {
 
 	@Test
 	public final void testMonth() {
-		fail("Not yet implemented"); // TODO
+		Date date = new Date();
+		Month m = new Month(date);
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.set(Calendar.DAY_OF_MONTH, 1);
+		assertEquals(sdf.format(c.getTime()), sdf.format(m.getStartDate()));
 	}
 
 	@Test
@@ -59,7 +64,10 @@ public class MonthTest {
 		Month d = new Month(date);
 		// Check immutability
 		d.getStartDate().setYear(1900);
-		assertEquals(sdf.format(date), sdf.format(d.getStartDate()));
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.set(Calendar.DAY_OF_MONTH, 1);
+		assertEquals(sdf.format(cal.getTime()), sdf.format(d.getStartDate()));
 	}
 
 	@Test
@@ -68,7 +76,12 @@ public class MonthTest {
 		Month d = new Month(date);
 		// Check immutability
 		d.getEndDate().setYear(1900);
-		assertEquals(sdf.format(date), sdf.format(d.getEndDate()));
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.set(Calendar.DAY_OF_MONTH, 1);
+		cal.add(Calendar.MONTH, 1);
+		cal.add(Calendar.DAY_OF_MONTH, -1);
+		assertEquals(sdf.format(cal.getTime()), sdf.format(d.getEndDate()));
 	}
 
 	@Test
