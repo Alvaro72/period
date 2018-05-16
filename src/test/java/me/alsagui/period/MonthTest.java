@@ -75,7 +75,7 @@ public class MonthTest {
 	public final void testIsWithinDate() {
 		Month m = new Month(new Date());
 		Day d = new Day();
-		assertTrue(m.isWithin(new Date()));
+		assertTrue(m.isWithin(d.getStartDate()));
 	}
 
 	@Test
