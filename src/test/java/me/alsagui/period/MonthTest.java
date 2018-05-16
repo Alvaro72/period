@@ -67,23 +67,29 @@ public class MonthTest {
 		Date date = new Date();
 		Month d = new Month(date);
 		// Check immutability
-		d.getStartDate().setYear(1900);
+		d.getEndDate().setYear(1900);
 		assertEquals(sdf.format(date), sdf.format(d.getEndDate()));
 	}
 
 	@Test
 	public final void testIsWithinDate() {
-		fail("Not yet implemented"); // TODO
+		Month m = new Month(new Date());
+		Day d = new Day();
+		assertTrue(m.isWithin(new Date()));
 	}
 
 	@Test
 	public final void testIsWithinPeriod() {
-		fail("Not yet implemented"); // TODO
+		Month m = new Month(new Date());
+		Day d = new Day();
+		assertTrue(m.isWithin(d));
 	}
 
 	@Test
 	public final void testEqualsObject() {
-		fail("Not yet implemented"); // TODO
+		Month m1 = new Month(new Date());
+		Month m2 = new Month(new Date());
+		assertEquals(m1, m2);
 	}
 
 }
