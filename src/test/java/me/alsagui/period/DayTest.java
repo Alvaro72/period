@@ -91,7 +91,7 @@ public class DayTest {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		
-		assertTrue(cal.get(Calendar.DAY_OF_MONTH)==19 && cal.get(Calendar.MONTH)==1 && cal.get(Calendar.YEAR)==2018);
+		assertTrue(cal.get(Calendar.DAY_OF_MONTH)==19 && cal.get(Calendar.MONTH)==0 && cal.get(Calendar.YEAR)==2018);
 	}
 
 	@Test
