@@ -44,7 +44,7 @@ public class MonthTest {
 		Calendar c = Calendar.getInstance();
 		Month d = Month.of(5, 2018);
 		c.set(Calendar.DAY_OF_MONTH, 1);
-		c.set(Calendar.MONTH, 5);
+		c.set(Calendar.MONTH, 5 - 1);
 		c.set(Calendar.YEAR, 2018);
 		assertEquals(sdf.format(d.getStartDate()), sdf.format(c.getTime()));
 	}
@@ -54,7 +54,16 @@ public class MonthTest {
 		Calendar c = Calendar.getInstance();
 		Month d = Month.of(9);
 		c.set(Calendar.DAY_OF_MONTH, 1);
-		c.set(Calendar.MONTH, 9);
+		c.set(Calendar.MONTH, 9 - 1);
+		assertEquals(sdf.format(d.getStartDate()), sdf.format(c.getTime()));
+	}
+
+	@Test
+	public final void testOfPeriod() {
+		Calendar c = Calendar.getInstance();
+		Month d = Month.of(9);
+		c.set(Calendar.DAY_OF_MONTH, 1);
+		c.set(Calendar.MONTH, 9 - 1);
 		assertEquals(sdf.format(d.getStartDate()), sdf.format(c.getTime()));
 	}
 
@@ -86,23 +95,35 @@ public class MonthTest {
 
 	@Test
 	public final void testIsWithinDate() {
-		Month m = new Month(new Date());
-		Day d = new Day();
+		Date date = new Date();
+		Month m = new Month(date);
+		Day d = new Day(date);
 		assertTrue(m.isWithin(d.getStartDate()));
 	}
 
 	@Test
 	public final void testIsWithinPeriod() {
-		Month m = new Month(new Date());
-		Day d = new Day();
+		Date date = new Date();
+		Month m = new Month(date);
+		Day d = new Day(date);
 		assertTrue(m.isWithin(d));
 	}
 
 	@Test
 	public final void testEqualsObject() {
-		Month m1 = new Month(new Date());
-		Month m2 = new Month(new Date());
+		Date date = new Date();
+		Month m1 = new Month(date);
+		Month m2 = new Month(date);
 		assertEquals(m1, m2);
+	}
+	@Test
+	public final void testGetDays() {
+		Month m1 = new Month();
+		Date endDate = m1.getEndDate();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(endDate);
+		long lastDay = cal.get(Calendar.DAY_OF_MONTH);
+		assertEquals(lastDay, m1.getDays());
 	}
 
 }

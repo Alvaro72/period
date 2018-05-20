@@ -20,6 +20,11 @@ public interface Period {
 	 */
 	public Date getEndDate();
 	/**
+	 * Gets the days between dates
+	 * @return long number of days
+	 */
+	public long getDays();
+	/**
 	 * Check that the date is within the period.
 	 * @param date date to check.
 	 * @return true if is within the period, false otherwise.
@@ -32,13 +37,13 @@ public interface Period {
 	 */
 	public boolean isWithin(Period period);
 	/**
-	 * Returns the period before this, if it is not possible, throw an exception.
+	 * Returns the period before this, if not possible, throw an exception.
 	 * @return Period previous period.
 	 * @throws UnsupportedOperationException if it is not possible to obtain the period.
 	 */
 	public Period previous() throws UnsupportedOperationException;
 	/**
-	 * Returns the period after this, if it is not possible, throw an exception.
+	 * Returns the period after this, if not possible, throw an exception.
 	 * @return Period next period.
 	 * @throws UnsupportedOperationException if it is not possible to obtain the period.
 	 */

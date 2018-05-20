@@ -93,4 +93,10 @@ public class DayTest {
 		
 		assertTrue(cal.get(Calendar.DAY_OF_MONTH)==19 && cal.get(Calendar.MONTH)==1 && cal.get(Calendar.YEAR)==2018);
 	}
+
+	@Test
+	public final void testGetDays() {
+		Day d1 = Day.of(19, 1, 2018);
+		assertEquals(1L, d1.getDays());
+	}
 }

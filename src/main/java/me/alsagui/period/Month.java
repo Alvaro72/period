@@ -8,6 +8,16 @@ import java.util.Date;
 public final class Month extends AbstractPeriod {
 	private SimpleDateFormat format = null;
 	
+	/**
+	 * Month with the current month
+	 */
+	public Month() {
+		this(new Date());
+	}
+	/**
+	 * Month from a date
+	 * @param date
+	 */
 	public Month(final Date date) {
 		Calendar c = Calendar.getInstance();
 		
@@ -31,19 +41,26 @@ public final class Month extends AbstractPeriod {
 		endDate = c.getTime();
 	}
 
-	public static Month of(int month, int year) {
+	public static Month of(final int month, final int year) {
 		Calendar c = Calendar.getInstance();
-		c.set(Calendar.MONTH, month);
+		c.set(Calendar.MONTH, month - 1);
 		c.set(Calendar.YEAR, year);
 		
 		return new Month(c.getTime());
 	}
 
-	public static Month of(int month) {
+	public static Month of(final int month) {
 		Calendar c = Calendar.getInstance();
-		c.set(Calendar.MONTH, month);
 		
-		return new Month(c.getTime());
+		return of(month, c.get(Calendar.YEAR));
+	}
+	
+	public static Month of(Period period) {
+		Month m = new Month(period.getStartDate());
+		if(!m.isWithin(period)) {
+			throw new IllegalArgumentException();
+		}
+		return m;
 	}
 	
 	@Override
@@ -73,18 +90,5 @@ public final class Month extends AbstractPeriod {
 		}
 		
 		return format.format(startDate);
-	}
-	
-	public static void main(String[] args) {
-		Month M = new Month(new Date());
-		System.out.println(M);
-		M.getStartDate().setMonth(9);
-		System.out.println(M);
-
-		Month M2 = new Month(new Date());
-		System.out.println(M2.equals(M));
-		
-		System.out.println(M2.previous());
-		System.out.println(M2.next());
 	}
 }

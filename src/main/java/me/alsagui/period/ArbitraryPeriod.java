@@ -8,37 +8,30 @@ import java.util.Date;
 public final class ArbitraryPeriod extends AbstractPeriod {
 	private SimpleDateFormat format = null;
 
-	protected ArbitraryPeriod() {
+	public ArbitraryPeriod(final Date startDate, final Date endDate) {
+		if(startDate.before(endDate)) {
+			throw new IllegalArgumentException("endDate previous to startDate.");
+		}
 		
-	}
-	
-	public ArbitraryPeriod(final Date date) {
 		Calendar c = Calendar.getInstance();
 		
-		c.setTime(date);
+		c.setTime(startDate);
 		
 		c.set(Calendar.HOUR_OF_DAY, 0);
 		c.set(Calendar.MINUTE, 0);
 		c.set(Calendar.SECOND, 0);
 		c.set(Calendar.MILLISECOND, 0);
 		
-		startDate = c.getTime();
+		this.startDate = c.getTime();
+		
+		c.setTime(endDate);
 		
 		c.set(Calendar.HOUR_OF_DAY, 23);
 		c.set(Calendar.MINUTE, 59);
 		c.set(Calendar.SECOND, 59);
 		c.set(Calendar.MILLISECOND, 0);
-
-		endDate = c.getTime();
-	}
-
-	public ArbitraryPeriod(final Date startDate, final Date endDate) {
-		if(startDate.before(endDate)) {
-			throw new IllegalArgumentException("endDate previous to startDate.");
-		}
 		
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.endDate = c.getTime();
 	}
 
 	public ArbitraryPeriod(final Period period) {
@@ -58,17 +51,4 @@ public final class ArbitraryPeriod extends AbstractPeriod {
 			+ format.format(endDate);
 	}
 	
-	public static void main(String[] args) {
-		Period M = new ArbitraryPeriod(new Date());
-		System.out.println(M);
-		M.getStartDate().setMonth(9);
-		System.out.println(M);
-
-		Month M2 = new Month(new Date());
-		System.out.println(M2.equals(M));
-		
-		System.out.println(M2.previous());
-		System.out.println(M2.next());
-	}
-
 }

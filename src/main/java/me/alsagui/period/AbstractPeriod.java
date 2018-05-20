@@ -1,27 +1,33 @@
 package me.alsagui.period;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractPeriod implements Period {
 	protected Date startDate;
 	protected Date endDate;
 
+	@Override
 	public Date getStartDate() {
 		return new Date(startDate.getTime());
 	}
 
+	@Override
 	public Date getEndDate() {
 		return new Date(endDate.getTime());
 	}
 
+	@Override
 	public Period previous() throws UnsupportedOperationException {
 		throw new UnsupportedOperationException("Not implemented.");
 	}
 
+	@Override
 	public Period next() throws UnsupportedOperationException {
 		throw new UnsupportedOperationException("Not implemented.");
 	}
 
+	@Override
 	public boolean isWithin(Date date) {
 		if(date!=null && (startDate.before(date) || startDate.equals(date))
 				&& (endDate.after(date)) || endDate.equals(date)) {
@@ -31,6 +37,15 @@ public abstract class AbstractPeriod implements Period {
 		return false;
 	}
 
+	@Override
+	public long getDays() {
+		return 1 + TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(), TimeUnit.MILLISECONDS);
+	}
+	
+	/* (non-Javadoc)
+	 * @see me.alsagui.period.Period#isWithin(Period period)
+	 */
+	@Override
 	public boolean isWithin(Period period) {
 		return isWithin(period.getStartDate()) && isWithin(period.getEndDate());
 	}
@@ -71,6 +86,4 @@ public abstract class AbstractPeriod implements Period {
 			return false;
 		return true;
 	}
-
-
 }
