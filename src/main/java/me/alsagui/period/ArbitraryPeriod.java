@@ -9,7 +9,7 @@ public final class ArbitraryPeriod extends AbstractPeriod {
 	private SimpleDateFormat format = null;
 
 	public ArbitraryPeriod(final Date startDate, final Date endDate) {
-		if(startDate.before(endDate)) {
+		if(endDate.before(startDate)) {
 			throw new IllegalArgumentException("endDate previous to startDate.");
 		}
 		
