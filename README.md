@@ -17,6 +17,6 @@ Create a Quarter:
 Calendar cal = Calendar.getInstance();
 cal.set(2018, 1, 31);
 Quarter quarter = new Quarter(cal.getTime()); // First Quarter of 2018
-Quarter nextTrimester = trimester.next();         // Second Quarter of 2018
-Quarter previousTrimester = trimester.previous(); // Fourth Quarter of 2017
+Quarter nextQuarter = quarter.next();         // Second Quarter of 2018
+Quarter previousQuarter = quarter.previous(); // Fourth Quarter of 2017
 ```
