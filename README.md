@@ -5,7 +5,7 @@ Java library for working with periods between dates.
 For use with maven add this dependency.
 ```
     <dependency>
-      <groupId>me.alsagui</groupId>
+      <groupId>com.github.alvaro72</groupId>
       <artifactId>period</artifactId>
       <version>0.8.2</version>
     </dependency>
