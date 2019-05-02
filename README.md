@@ -12,11 +12,11 @@ For use with maven add this dependency.
 ```
 
 # Examples
-Create a Trimester:
+Create a Quarter:
 ```
 Calendar cal = Calendar.getInstance();
 cal.set(2018, 1, 31);
-Trimester trimester = new Trimester(cal.getTime()); // First Trimester of 2018
-Trimester nextTrimester = trimester.next();         // Second Trimester of 2018
-Trimester previousTrimester = trimester.previous(); // Fourth Trimester of 2017
+Quarter quarter = new Quarter(cal.getTime()); // First Quarter of 2018
+Quarter nextTrimester = trimester.next();         // Second Quarter of 2018
+Quarter previousTrimester = trimester.previous(); // Fourth Quarter of 2017
 ```
