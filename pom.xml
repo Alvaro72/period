@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/Alvaro72</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
