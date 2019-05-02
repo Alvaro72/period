@@ -1,4 +1,4 @@
-package me.alsagui.period;
+package com.github.alvaro72.period;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.Test;
+
+import com.github.alvaro72.period.Semester;
+import com.github.alvaro72.period.Year;
 
 public class YearTest {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

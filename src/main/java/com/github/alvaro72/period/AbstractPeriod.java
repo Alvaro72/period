@@ -1,4 +1,4 @@
-package me.alsagui.period;
+package com.github.alvaro72.period;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;

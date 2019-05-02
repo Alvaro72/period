@@ -1,4 +1,4 @@
-package me.alsagui.period;
+package com.github.alvaro72.period;
 
 import java.util.Calendar;
 import java.util.Date;

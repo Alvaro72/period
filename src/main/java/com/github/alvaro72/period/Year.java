@@ -1,34 +1,28 @@
-package me.alsagui.period;
-
+package com.github.alvaro72.period;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Period that represents a month.
+ * Period that represents a year.
  * @author alsagui
  *
  */
-public final class Month extends AbstractPeriod {
+public final class Year extends AbstractPeriod {
 	private SimpleDateFormat format = null;
-	
-	/**
-	 * Month with the current month
-	 */
-	public Month() {
+
+	public Year() {
 		this(new Date());
 	}
-	/**
-	 * Month from a date
-	 * @param date
-	 */
-	public Month(final Date date) {
+
+	public Year(final Date date) {
 		Calendar c = Calendar.getInstance();
 		
 		c.setTime(date);
 		
 		c.set(Calendar.DAY_OF_MONTH, 1);
+		c.set(Calendar.MONTH, 0);
 		c.set(Calendar.HOUR_OF_DAY, 0);
 		c.set(Calendar.MINUTE, 0);
 		c.set(Calendar.SECOND, 0);
@@ -36,8 +30,8 @@ public final class Month extends AbstractPeriod {
 		
 		startDate = c.getTime();
 		
-		c.add(Calendar.MONTH, 1);
-		c.add(Calendar.DAY_OF_MONTH, -1);
+		c.set(Calendar.DAY_OF_MONTH, 31);
+		c.set(Calendar.MONTH, 11);
 		c.set(Calendar.HOUR_OF_DAY, 23);
 		c.set(Calendar.MINUTE, 59);
 		c.set(Calendar.SECOND, 59);
@@ -45,37 +39,22 @@ public final class Month extends AbstractPeriod {
 
 		endDate = c.getTime();
 	}
-
-	public static Month of(final int month, final int year) {
+	public static Year of(int year) {
 		Calendar c = Calendar.getInstance();
-		c.set(Calendar.MONTH, month - 1);
+		
 		c.set(Calendar.YEAR, year);
 		
-		return new Month(c.getTime());
+		return new Year(c.getTime());
 	}
 
-	public static Month of(final int month) {
-		Calendar c = Calendar.getInstance();
-		
-		return of(month, c.get(Calendar.YEAR));
-	}
-	
-	public static Month of(Period period) {
-		Month m = new Month(period.getStartDate());
-		if(!m.isWithin(period)) {
-			throw new IllegalArgumentException();
-		}
-		return m;
-	}
-	
 	@Override
 	public Period previous() {
 		Calendar c = Calendar.getInstance();
 		
 		c.setTime(startDate);
-		c.add(Calendar.MONTH, -1);
+		c.add(Calendar.YEAR, -1);
 		
-		return new Month(c.getTime());
+		return new Year(c.getTime());
 	}
 	
 	@Override
@@ -83,17 +62,18 @@ public final class Month extends AbstractPeriod {
 		Calendar c = Calendar.getInstance();
 		
 		c.setTime(startDate);
-		c.add(Calendar.MONTH, 1);
+		c.add(Calendar.YEAR, 1);
 		
-		return new Month(c.getTime());
+		return new Year(c.getTime());
 	}
 
 	@Override
 	public String toString() {
 		if(format==null) {
-			format = new SimpleDateFormat("MMMM YYYY");
+			format = new SimpleDateFormat("YYYY");
 		}
 		
 		return format.format(startDate);
 	}
+
 }
