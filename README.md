@@ -7,7 +7,7 @@ For use with maven add this dependency.
     <dependency>
       <groupId>me.alsagui</groupId>
       <artifactId>period</artifactId>
-      <version>0.8.1</version>
+      <version>0.8.2</version>
     </dependency>
 ```
 
