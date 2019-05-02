@@ -52,6 +52,20 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<licenses>
@@ -68,4 +82,10 @@
 			<organizationUrl>https://github.com/Alvaro72</organizationUrl>
 		</developer>
 	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/Alvaro72/period.git</connection>
+		<developerConnection>scm:git:ssh://github.com:Alvaro72/period.git</developerConnection>
+		<url>https://github.com/Alvaro72/period</url>
+	</scm>
 </project>
