@@ -8,15 +8,15 @@ import java.util.Date;
  * @author alsagui
  *
  */
-public final class Trimester extends AbstractPeriod {
-	public Trimester() {
+public final class Quarter extends AbstractPeriod {
+	public Quarter() {
 		this(new Date());
 	}
 	/**
 	 * Quarter from a date
 	 * @param date
 	 */
-	public Trimester(final Date date) {
+	public Quarter(final Date date) {
 		Calendar c = Calendar.getInstance();
 		
 		c.setTime(date);
@@ -52,11 +52,11 @@ public final class Trimester extends AbstractPeriod {
 		endDate = c.getTime();
 	}
 	
-	public Trimester of(int trimester, int year) {
+	public Quarter of(int trimester, int year) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, (trimester - 1) * 3, 1);
 		
-		return new Trimester(cal.getTime());
+		return new Quarter(cal.getTime());
 	}
 
 	@Override

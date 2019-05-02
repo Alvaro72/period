@@ -23,7 +23,7 @@ public class ArbitraryPeriodTest {
 	public final void testArbitraryPeriodPeriod() {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2018, 11, 31);
-		Trimester t = new Trimester(cal.getTime());
+		Quarter t = new Quarter(cal.getTime());
 		ArbitraryPeriod ap = new ArbitraryPeriod(t);
 	}
 
@@ -73,7 +73,7 @@ public class ArbitraryPeriodTest {
 	public final void testIsWithinDate() {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2017, 3, 30);
-		ArbitraryPeriod ap = new ArbitraryPeriod(new Trimester(cal.getTime()));
+		ArbitraryPeriod ap = new ArbitraryPeriod(new Quarter(cal.getTime()));
 		assertEquals(true, ap.isWithin(cal.getTime()));
 	}
 
@@ -88,7 +88,7 @@ public class ArbitraryPeriodTest {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2017, 3, 30);
 		ArbitraryPeriod ap = new ArbitraryPeriod(new Day(cal.getTime()));
-		ArbitraryPeriod ap2 = new ArbitraryPeriod(new Trimester(cal.getTime()));
+		ArbitraryPeriod ap2 = new ArbitraryPeriod(new Quarter(cal.getTime()));
 		assertEquals(true, ap2.isWithin(ap));
 	}
 
