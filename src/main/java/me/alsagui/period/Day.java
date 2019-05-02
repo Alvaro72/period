@@ -5,6 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Period that represents a Day.
+ * @author alsagui
+ *
+ */
 public final class Day extends AbstractPeriod {
 	private SimpleDateFormat format = null;
 	

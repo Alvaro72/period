@@ -4,8 +4,8 @@ package me.alsagui.period;
 import java.util.Date;
 
 /**
- * A length or portion of time between dates.
- * @author alvarosaezdeguinoaremon
+ * A length or portion of time between two dates.
+ * @author alsagui
  *
  */
 public interface Period {

@@ -4,6 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Period that represents a year.
+ * @author alsagui
+ *
+ */
 public final class Year extends AbstractPeriod {
 	private SimpleDateFormat format = null;
 

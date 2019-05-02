@@ -3,12 +3,17 @@ package me.alsagui.period;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Period that represents a Quarter.
+ * @author alsagui
+ *
+ */
 public final class Trimester extends AbstractPeriod {
 	public Trimester() {
 		this(new Date());
 	}
 	/**
-	 * Trimester from a date
+	 * Quarter from a date
 	 * @param date
 	 */
 	public Trimester(final Date date) {

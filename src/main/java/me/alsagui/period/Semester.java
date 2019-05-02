@@ -3,6 +3,11 @@ package me.alsagui.period;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Period that represents a Semester.
+ * @author alsagui
+ *
+ */
 public final class Semester extends AbstractPeriod {
 	public Semester() {
 		this(new Date());

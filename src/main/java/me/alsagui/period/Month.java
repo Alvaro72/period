@@ -5,6 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Period that represents a month.
+ * @author alsagui
+ *
+ */
 public final class Month extends AbstractPeriod {
 	private SimpleDateFormat format = null;
 	
