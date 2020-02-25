@@ -67,23 +67,30 @@ public abstract class AbstractPeriod implements Period {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Period other = (Period) obj;
 		if (getEndDate() == null) {
-			if (other.getEndDate() != null)
+			if (other.getEndDate() != null) {
 				return false;
-		} else if (!getEndDate().equals(other.getEndDate()))
+			}
+		} else if (!getEndDate().equals(other.getEndDate())) {
 			return false;
+		}
 		if (getStartDate() == null) {
-			if (other.getStartDate() != null)
+			if (other.getStartDate() != null) {
 				return false;
-		} else if (!getStartDate().equals(other.getStartDate()))
+			}
+		} else if (!getStartDate().equals(other.getStartDate())) {
 			return false;
+		}
 		return true;
 	}
 }

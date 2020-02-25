@@ -7,6 +7,9 @@ import java.util.Date;
 
 public final class ArbitraryPeriod extends AbstractPeriod {
 	private SimpleDateFormat format = null;
+	private final static int LAST_HOUR = 23;
+	private final static int LAST_MINUTE = 59;
+	private final static int LAST_SECOND = 59;
 
 	public ArbitraryPeriod(final Date startDate, final Date endDate) {
 		if(endDate.before(startDate)) {
@@ -26,9 +29,9 @@ public final class ArbitraryPeriod extends AbstractPeriod {
 		
 		c.setTime(endDate);
 		
-		c.set(Calendar.HOUR_OF_DAY, 23);
-		c.set(Calendar.MINUTE, 59);
-		c.set(Calendar.SECOND, 59);
+		c.set(Calendar.HOUR_OF_DAY, LAST_HOUR);
+		c.set(Calendar.MINUTE, LAST_MINUTE);
+		c.set(Calendar.SECOND, LAST_SECOND);
 		c.set(Calendar.MILLISECOND, 0);
 		
 		this.endDate = c.getTime();
