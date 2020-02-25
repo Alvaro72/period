@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
@@ -78,7 +79,11 @@ public class YearTest {
 	@Test
 	public final void testGetDays() {
 		Year y1 = new Year();
-		assertEquals(365, y1.getDays());
+		Date date1 = y1.getStartDate();
+		Date date2 = y1.getEndDate();
+		long diff = date2.getTime() - date1.getTime();
+		long days = 1 + TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+		assertEquals(days, y1.getDays());
 	}
 
 	@Test
