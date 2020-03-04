@@ -9,11 +9,14 @@ import java.util.Date;
  *
  */
 public final class Quarter extends AbstractPeriod {
+    /**
+     * Create a quarter from now.
+     */
 	public Quarter() {
 		this(new Date());
 	}
 	/**
-	 * Quarter from a date
+	 * Quarter from a date.
 	 * @param date
 	 */
 	public Quarter(final Date date) {
@@ -52,6 +55,12 @@ public final class Quarter extends AbstractPeriod {
 		setEndDate(c.getTime());
 	}
 	
+	/**
+	 * Create a quarter of trimester and year.
+	 * @param trimester
+	 * @param year
+	 * @return
+	 */
 	public Quarter of(int trimester, int year) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, (trimester - 1) * 3, 1);
