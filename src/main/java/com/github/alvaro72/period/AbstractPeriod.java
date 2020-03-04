@@ -28,7 +28,7 @@ public abstract class AbstractPeriod implements Period {
 	}
 
 	@Override
-	public boolean isWithin(Date date) {
+	public boolean isWithin(final Date date) {
 		if(date!=null && (startDate.before(date) || startDate.equals(date))
 				&& (endDate.after(date)) || endDate.equals(date)) {
 				return true;
@@ -46,7 +46,7 @@ public abstract class AbstractPeriod implements Period {
 	 * @see me.alsagui.period.Period#isWithin(Period period)
 	 */
 	@Override
-	public boolean isWithin(Period period) {
+	public boolean isWithin(final Period period) {
 		return isWithin(period.getStartDate()) && isWithin(period.getEndDate());
 	}
 

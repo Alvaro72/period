@@ -29,13 +29,13 @@ public interface Period {
 	 * @param date date to check.
 	 * @return true if is within the period, false otherwise.
 	 */
-	public boolean isWithin(Date date);
+	public boolean isWithin(final Date date);
 	/**
 	 * Check that the specified period is within this period.
 	 * @param period period to check.
 	 * @return true if is within the period, false otherwise.
 	 */
-	public boolean isWithin(Period period);
+	public boolean isWithin(final Period period);
 	/**
 	 * Returns the period before this, if not possible, throw an exception.
 	 * @return Period previous period.
