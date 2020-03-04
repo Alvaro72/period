@@ -13,39 +13,39 @@ public interface Period {
 	 * Gets the start date of this period.
 	 * @return date start date.
 	 */
-	public Date getStartDate();
+	Date getStartDate();
 	/**
 	 * Gets the end date of this period.
 	 * @return date end date.
 	 */
-	public Date getEndDate();
+	Date getEndDate();
 	/**
-	 * Gets the days between dates
+	 * Gets the days between dates.
 	 * @return long number of days
 	 */
-	public long getDays();
+	long getDays();
 	/**
 	 * Check that the date is within the period.
 	 * @param date date to check.
 	 * @return true if is within the period, false otherwise.
 	 */
-	public boolean isWithin(final Date date);
+	boolean isWithin(final Date date);
 	/**
 	 * Check that the specified period is within this period.
 	 * @param period period to check.
 	 * @return true if is within the period, false otherwise.
 	 */
-	public boolean isWithin(final Period period);
+	boolean isWithin(final Period period);
 	/**
 	 * Returns the period before this, if not possible, throw an exception.
 	 * @return Period previous period.
 	 * @throws UnsupportedOperationException if it is not possible to obtain the period.
 	 */
-	public Period previous() throws UnsupportedOperationException;
+	Period previous() throws UnsupportedOperationException;
 	/**
 	 * Returns the period after this, if not possible, throw an exception.
 	 * @return Period next period.
 	 * @throws UnsupportedOperationException if it is not possible to obtain the period.
 	 */
-	public Period next() throws UnsupportedOperationException;
+	Period next() throws UnsupportedOperationException;
 }
