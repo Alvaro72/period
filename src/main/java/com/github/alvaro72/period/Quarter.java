@@ -30,16 +30,13 @@ public final class Quarter extends AbstractPeriod {
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
         
-        if(c.get(Calendar.MONTH) > 8) {
+        if (c.get(Calendar.MONTH) > 8) {
             c.set(Calendar.MONTH, 9);
-        }
-        else if(c.get(Calendar.MONTH) > 5) {
+        } else if (c.get(Calendar.MONTH) > 5) {
             c.set(Calendar.MONTH, 6);
-        }
-        else if(c.get(Calendar.MONTH) > 2) {
+        } else if (c.get(Calendar.MONTH) > 2) {
             c.set(Calendar.MONTH, 3);
-        }
-        else {
+        } else {
             c.set(Calendar.MONTH, 0);
         }
         
