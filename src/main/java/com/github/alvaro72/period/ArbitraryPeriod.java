@@ -25,7 +25,7 @@ public final class ArbitraryPeriod extends AbstractPeriod {
 		c.set(Calendar.SECOND, 0);
 		c.set(Calendar.MILLISECOND, 0);
 		
-		this.startDate = c.getTime();
+		setStartDate(c.getTime());
 		
 		c.setTime(endDate);
 		
@@ -34,7 +34,7 @@ public final class ArbitraryPeriod extends AbstractPeriod {
 		c.set(Calendar.SECOND, LAST_SECOND);
 		c.set(Calendar.MILLISECOND, 0);
 		
-		this.endDate = c.getTime();
+		setEndDate(c.getTime());
 	}
 
 	public ArbitraryPeriod(final Period period) {
@@ -50,8 +50,8 @@ public final class ArbitraryPeriod extends AbstractPeriod {
 		if(format==null) {
 			format = new SimpleDateFormat("dd MMMM YYYY");
 		}
-		return format.format(startDate) + "-"
-			+ format.format(endDate);
+		return format.format(getStartDate()) + "-"
+			+ format.format(getEndDate());
 	}
 	
 }

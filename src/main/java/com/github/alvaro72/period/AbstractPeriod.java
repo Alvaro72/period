@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractPeriod implements Period {
-	protected Date startDate;
-	protected Date endDate;
+	private Date startDate;
+	private Date endDate;
 
 	@Override
 	public Date getStartDate() {
@@ -15,6 +15,14 @@ public abstract class AbstractPeriod implements Period {
 	@Override
 	public Date getEndDate() {
 		return new Date(endDate.getTime());
+	}
+
+	public void setStartDate(final Date date) {
+		this.startDate = new Date(date.getTime());
+	}
+
+	public void setEndDate(final Date date) {
+		this.endDate = new Date(date.getTime());
 	}
 
 	@Override

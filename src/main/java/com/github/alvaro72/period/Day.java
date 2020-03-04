@@ -27,14 +27,14 @@ public final class Day extends AbstractPeriod {
 		c.set(Calendar.SECOND, 0);
 		c.set(Calendar.MILLISECOND, 0);
 		
-		startDate = c.getTime();
+		setStartDate(c.getTime());
 		
 		c.set(Calendar.HOUR_OF_DAY, 23);
 		c.set(Calendar.MINUTE, 59);
 		c.set(Calendar.SECOND, 59);
 		c.set(Calendar.MILLISECOND, 0);
 
-		endDate = c.getTime();
+		setEndDate(c.getTime());
 	}
 
 	/**
@@ -64,7 +64,7 @@ public final class Day extends AbstractPeriod {
 	public Period previous() {
 		Calendar c = Calendar.getInstance();
 		
-		c.setTime(startDate);
+		c.setTime(getStartDate());
 		c.add(Calendar.DAY_OF_MONTH, -1);
 		
 		return new Day(c.getTime());
@@ -74,7 +74,7 @@ public final class Day extends AbstractPeriod {
 	public Period next() {
 		Calendar c = Calendar.getInstance();
 		
-		c.setTime(startDate);
+		c.setTime(getStartDate());
 		c.add(Calendar.DAY_OF_MONTH, 1);
 		
 		return new Day(c.getTime());
@@ -86,7 +86,7 @@ public final class Day extends AbstractPeriod {
 			format = new SimpleDateFormat("dd MMMM YYYY");
 		}
 		
-		return format.format(startDate);
+		return format.format(getStartDate());
 	}
 
 }

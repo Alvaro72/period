@@ -34,7 +34,7 @@ public final class Semester extends AbstractPeriod {
 			c.set(Calendar.MONTH, 0);
 		}
 		
-		startDate = c.getTime();
+		setStartDate(c.getTime());
 		
 		c.add(Calendar.MONTH, 6);
 		c.add(Calendar.DAY_OF_MONTH, -1);
@@ -43,14 +43,14 @@ public final class Semester extends AbstractPeriod {
 		c.set(Calendar.SECOND, 59);
 		c.set(Calendar.MILLISECOND, 0);
 
-		endDate = c.getTime();
+		setEndDate(c.getTime());
 	}
 
 	@Override
 	public Period previous() {
 		Calendar c = Calendar.getInstance();
 		
-		c.setTime(startDate);
+		c.setTime(getStartDate());
 		c.add(Calendar.MONTH, -6);
 		
 		return new Month(c.getTime());
@@ -60,7 +60,7 @@ public final class Semester extends AbstractPeriod {
 	public Period next() {
 		Calendar c = Calendar.getInstance();
 		
-		c.setTime(startDate);
+		c.setTime(getStartDate());
 		c.add(Calendar.MONTH, 6);
 		
 		return new Month(c.getTime());
