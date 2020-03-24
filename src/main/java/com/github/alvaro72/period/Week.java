@@ -26,7 +26,7 @@ public class Week extends AbstractPeriod {
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
 
-        startDate = c.getTime();
+		setStartDate(c.getTime());
 
         c.add(Calendar.DAY_OF_YEAR,6);
 //        c.set(Calendar.DAY_OF_WEEK, 6);
@@ -35,7 +35,7 @@ public class Week extends AbstractPeriod {
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
 
-        endDate = c.getTime();
+		setEndDate(c.getTime());
     }
 
     public Week() {
@@ -45,7 +45,7 @@ public class Week extends AbstractPeriod {
     @Override
     public Period previous() throws UnsupportedOperationException {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(startDate);
+        calendar.setTime(getStartDate());
         calendar.add(Calendar.DAY_OF_YEAR, -7);
         Date date = calendar.getTime();
 
@@ -55,7 +55,7 @@ public class Week extends AbstractPeriod {
     @Override
     public Period next() throws UnsupportedOperationException {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(startDate);
+        calendar.setTime(getStartDate());
         calendar.add(Calendar.DAY_OF_YEAR, 7);
         Date date = calendar.getTime();
 
@@ -68,6 +68,6 @@ public class Week extends AbstractPeriod {
             format = new SimpleDateFormat("MMMM YYYY");
         }
 
-        return format.format(startDate);
+        return format.format(getStartDate());
     }
 }
