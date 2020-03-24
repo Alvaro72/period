@@ -1,5 +1,6 @@
 package com.github.alvaro72.period;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -37,8 +38,19 @@ public abstract class AbstractPeriod implements Period {
 
 	@Override
 	public boolean isWithin(Date date) {
-		if(date!=null && (startDate.before(date) || startDate.equals(date))
-				&& (endDate.after(date)) || endDate.equals(date)) {
+		Date newdate = null;
+		if(date!=null) {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+			cal.set(Calendar.MINUTE, 0);
+			cal.set(Calendar.SECOND, 0);
+			cal.set(Calendar.MILLISECOND, 0);
+			newdate = cal.getTime();
+
+		}
+		if(newdate!=null && (startDate.before(newdate) || startDate.equals(newdate))
+				&& (endDate.after(newdate)) || endDate.equals(newdate)) {
 				return true;
 		}
 		
