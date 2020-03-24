@@ -33,10 +33,6 @@ public final class Month extends AbstractPeriod {
 
 		c.add(Calendar.MONTH, 1);
 		c.add(Calendar.DAY_OF_MONTH, -1);
-		c.set(Calendar.HOUR_OF_DAY, 0);
-		c.set(Calendar.MINUTE, 0);
-		c.set(Calendar.SECOND, 0);
-		c.set(Calendar.MILLISECOND, 0);
 
 		setEndDate(AbstractPeriod.clearDate(c.getTime()));
 	}

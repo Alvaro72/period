@@ -2,6 +2,7 @@ package com.github.alvaro72.period;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractPeriod implements Period {
@@ -19,11 +20,11 @@ public abstract class AbstractPeriod implements Period {
 	}
 
 	public void setStartDate(Date startDate) {
-		this.startDate = new Date(startDate.getTime());
+		this.startDate = new Date(AbstractPeriod.clearDate(startDate).getTime());
 	}
 
 	public void setEndDate(Date endDate) {
-		this.endDate = new Date(endDate.getTime());
+		this.endDate = new Date(AbstractPeriod.clearDate(endDate).getTime());
 	}
 
 	@Override
@@ -63,6 +64,7 @@ public abstract class AbstractPeriod implements Period {
 			f_dia = cal.get(Calendar.DAY_OF_MONTH);
 
 			cal.clear();
+			cal.setTimeZone(TimeZone.getTimeZone("UTC"));
 
 			cal.set(Calendar.DAY_OF_MONTH, f_dia);
 			cal.set(Calendar.MONTH, f_mes);
