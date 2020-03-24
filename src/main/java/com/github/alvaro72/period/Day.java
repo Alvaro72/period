@@ -18,23 +18,8 @@ public final class Day extends AbstractPeriod {
 	 * @param date date.
 	 */
 	public Day(final Date date) {
-		Calendar c = Calendar.getInstance();
-		
-		c.setTime(date);
-		
-		c.set(Calendar.HOUR_OF_DAY, 0);
-		c.set(Calendar.MINUTE, 0);
-		c.set(Calendar.SECOND, 0);
-		c.set(Calendar.MILLISECOND, 0);
-		
-		setStartDate(c.getTime());
-		
-		c.set(Calendar.HOUR_OF_DAY, 0);
-		c.set(Calendar.MINUTE, 0);
-		c.set(Calendar.SECOND, 0);
-		c.set(Calendar.MILLISECOND, 0);
-
-		setEndDate(c.getTime());
+		setStartDate(AbstractPeriod.clearDate(date));
+		setEndDate(AbstractPeriod.clearDate(date));
 	}
 
 	/**
@@ -52,7 +37,8 @@ public final class Day extends AbstractPeriod {
 	 */
 	public static Day of(int day, int month, int year) {
 		Calendar cal = Calendar.getInstance();
-		
+
+		cal.clear();
 		cal.set(Calendar.DAY_OF_MONTH, day);
 		cal.set(Calendar.MONTH, month - 1);
 		cal.set(Calendar.YEAR, year);

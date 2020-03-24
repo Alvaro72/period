@@ -40,14 +40,7 @@ public abstract class AbstractPeriod implements Period {
 	public boolean isWithin(Date date) {
 		Date newdate = null;
 		if(date!=null) {
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(date);
-			cal.set(Calendar.HOUR_OF_DAY, 0);
-			cal.set(Calendar.MINUTE, 0);
-			cal.set(Calendar.SECOND, 0);
-			cal.set(Calendar.MILLISECOND, 0);
-			newdate = cal.getTime();
-
+			newdate = AbstractPeriod.clearDate(date);
 		}
 		if(newdate!=null && (startDate.before(newdate) || startDate.equals(newdate))
 				&& (endDate.after(newdate)) || endDate.equals(newdate)) {
@@ -57,9 +50,35 @@ public abstract class AbstractPeriod implements Period {
 		return false;
 	}
 
+	public static Date clearDate(Date date) {
+		Date newdate = null;
+
+		if(date!=null) {
+			int f_anio, f_mes, f_dia;
+
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+			f_anio = cal.get(Calendar.YEAR);
+			f_mes = cal.get(Calendar.MONTH);
+			f_dia = cal.get(Calendar.DAY_OF_MONTH);
+
+			cal.clear();
+
+			cal.set(Calendar.DAY_OF_MONTH, f_dia);
+			cal.set(Calendar.MONTH, f_mes);
+			cal.set(Calendar.YEAR, f_anio);
+			newdate = cal.getTime();
+		}
+		else {
+			throw new NullPointerException();
+		}
+
+		return newdate;
+	}
+
 	@Override
 	public long getDays() {
-		return 1 + TimeUnit.DAYS.convert(endDate.getTime() - startDate.getTime(), TimeUnit.MILLISECONDS);
+		return 1 + TimeUnit.DAYS.convert(AbstractPeriod.clearDate(endDate).getTime() - AbstractPeriod.clearDate(startDate).getTime(), TimeUnit.MILLISECONDS);
 	}
 	
 	/* (non-Javadoc)

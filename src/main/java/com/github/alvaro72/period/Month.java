@@ -25,17 +25,12 @@ public final class Month extends AbstractPeriod {
 	 */
 	public Month(final Date date) {
 		Calendar c = Calendar.getInstance();
-		
-		c.setTime(date);
-		
+
+		c.setTime(AbstractPeriod.clearDate(date));
 		c.set(Calendar.DAY_OF_MONTH, 1);
-		c.set(Calendar.HOUR_OF_DAY, 0);
-		c.set(Calendar.MINUTE, 0);
-		c.set(Calendar.SECOND, 0);
-		c.set(Calendar.MILLISECOND, 0);
-		
-		setStartDate(c.getTime());
-		
+
+		setStartDate(AbstractPeriod.clearDate(c.getTime()));
+
 		c.add(Calendar.MONTH, 1);
 		c.add(Calendar.DAY_OF_MONTH, -1);
 		c.set(Calendar.HOUR_OF_DAY, 0);
@@ -43,7 +38,7 @@ public final class Month extends AbstractPeriod {
 		c.set(Calendar.SECOND, 0);
 		c.set(Calendar.MILLISECOND, 0);
 
-		setEndDate(c.getTime());
+		setEndDate(AbstractPeriod.clearDate(c.getTime()));
 	}
 
 	public static Month of(final int month, final int year) {
