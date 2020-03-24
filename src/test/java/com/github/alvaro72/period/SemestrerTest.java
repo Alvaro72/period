@@ -66,7 +66,7 @@ public class SemestrerTest {
 		Calendar cal = Calendar.getInstance();
 		cal.set(2018, 6, 1);
 		Semester s1 = new Semester(cal.getTime());
-		assertEquals(185, s1.getDays());
+		assertEquals(184, s1.getDays());
 	}
 
 	@Test
