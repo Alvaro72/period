@@ -17,6 +17,14 @@ public abstract class AbstractPeriod implements Period {
 		return new Date(endDate.getTime());
 	}
 
+	public void setStartDate(Date startDate) {
+		this.startDate = new Date(startDate.getTime());
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = new Date(endDate.getTime());
+	}
+
 	@Override
 	public Period previous() throws UnsupportedOperationException {
 		throw new UnsupportedOperationException("Not implemented.");
