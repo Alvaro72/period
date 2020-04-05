@@ -78,7 +78,7 @@ public class WeekTest {
 		d.getStartDate().setYear(1900);
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
-		cal.add(Calendar.DAY_OF_YEAR, ( Calendar.MONDAY - cal.get(Calendar.DAY_OF_WEEK) ));
+		cal.add(Calendar.DAY_OF_YEAR, ( Calendar.SUNDAY - cal.get(Calendar.DAY_OF_WEEK) ));
 		assertEquals(sdf.format(cal.getTime()), sdf.format(d.getStartDate()));
 	}
 

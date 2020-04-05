@@ -19,23 +19,23 @@ public class Week extends AbstractPeriod {
 
         c.setTime(date);
 
-        c.add(Calendar.DAY_OF_YEAR, ( Calendar.MONDAY - c.get(Calendar.DAY_OF_WEEK) ));
-//        c.set(Calendar.DAY_OF_WEEK, 0);
+        c.add(Calendar.DAY_OF_YEAR, ( Calendar.SUNDAY - c.get(Calendar.DAY_OF_WEEK) ) );
+        //c.set(Calendar.DAY_OF_WEEK, 0);
         c.set(Calendar.HOUR_OF_DAY, 0);
         c.set(Calendar.MINUTE, 0);
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
 
-		setStartDate(c.getTime());
+		setStartDate(AbstractPeriod.clearDate(c.getTime()));
 
         c.add(Calendar.DAY_OF_YEAR,6);
-//        c.set(Calendar.DAY_OF_WEEK, 6);
+        //c.set(Calendar.DAY_OF_WEEK, 6);
         c.set(Calendar.HOUR_OF_DAY, 0);
         c.set(Calendar.MINUTE, 0);
         c.set(Calendar.SECOND, 0);
         c.set(Calendar.MILLISECOND, 0);
 
-		setEndDate(c.getTime());
+		setEndDate(AbstractPeriod.clearDate(c.getTime()));
     }
 
     public Week() {
@@ -65,9 +65,9 @@ public class Week extends AbstractPeriod {
     @Override
     public String toString() {
         if(format==null) {
-            format = new SimpleDateFormat("MMMM YYYY");
+            format = new SimpleDateFormat("dd MMMM YYYY");
         }
 
-        return format.format(getStartDate());
+        return format.format(getStartDate()) + " - " +format.format(getEndDate());
     }
 }
