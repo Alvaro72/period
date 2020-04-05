@@ -16,26 +16,44 @@ public class Week extends AbstractPeriod {
 
     public Week(Date date) {
         Calendar c = Calendar.getInstance();
+        if(c.getFirstDayOfWeek()==Calendar.SUNDAY) {
+            c.setTime(date);
 
-        c.setTime(date);
+            c.add(Calendar.DAY_OF_YEAR, (Calendar.SUNDAY - c.get(Calendar.DAY_OF_WEEK)));
+            c.set(Calendar.HOUR_OF_DAY, 0);
+            c.set(Calendar.MINUTE, 0);
+            c.set(Calendar.SECOND, 0);
+            c.set(Calendar.MILLISECOND, 0);
 
-        c.add(Calendar.DAY_OF_YEAR, ( Calendar.SUNDAY - c.get(Calendar.DAY_OF_WEEK) ) );
-        //c.set(Calendar.DAY_OF_WEEK, 0);
-        c.set(Calendar.HOUR_OF_DAY, 0);
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
-        c.set(Calendar.MILLISECOND, 0);
+            setStartDate(AbstractPeriod.clearDate(c.getTime()));
 
-		setStartDate(AbstractPeriod.clearDate(c.getTime()));
+            c.add(Calendar.DAY_OF_YEAR, 6);
+            c.set(Calendar.HOUR_OF_DAY, 0);
+            c.set(Calendar.MINUTE, 0);
+            c.set(Calendar.SECOND, 0);
+            c.set(Calendar.MILLISECOND, 0);
 
-        c.add(Calendar.DAY_OF_YEAR,6);
-        //c.set(Calendar.DAY_OF_WEEK, 6);
-        c.set(Calendar.HOUR_OF_DAY, 0);
-        c.set(Calendar.MINUTE, 0);
-        c.set(Calendar.SECOND, 0);
-        c.set(Calendar.MILLISECOND, 0);
+            setEndDate(AbstractPeriod.clearDate(c.getTime()));
+        }
+        else {
+            c.setTime(date);
 
-		setEndDate(AbstractPeriod.clearDate(c.getTime()));
+            c.add(Calendar.DAY_OF_YEAR, c.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY?-6:(Calendar.MONDAY - c.get(Calendar.DAY_OF_WEEK)));
+            c.set(Calendar.HOUR_OF_DAY, 0);
+            c.set(Calendar.MINUTE, 0);
+            c.set(Calendar.SECOND, 0);
+            c.set(Calendar.MILLISECOND, 0);
+
+            setStartDate(AbstractPeriod.clearDate(c.getTime()));
+
+            c.add(Calendar.DAY_OF_YEAR, 6);
+            c.set(Calendar.HOUR_OF_DAY, 0);
+            c.set(Calendar.MINUTE, 0);
+            c.set(Calendar.SECOND, 0);
+            c.set(Calendar.MILLISECOND, 0);
+
+            setEndDate(AbstractPeriod.clearDate(c.getTime()));
+        }
     }
 
     public Week() {
