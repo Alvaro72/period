@@ -43,12 +43,8 @@ public abstract class AbstractPeriod implements Period {
 		if(date!=null) {
 			newdate = AbstractPeriod.clearDate(date);
 		}
-		if(newdate!=null && (startDate.before(newdate) || startDate.equals(newdate))
-				&& (endDate.after(newdate)) || endDate.equals(newdate)) {
-				return true;
-		}
-		
-		return false;
+		return newdate != null && (startDate.before(newdate) || startDate.equals(newdate))
+				&& (endDate.after(newdate)) || endDate.equals(newdate);
 	}
 
 	public static Date clearDate(Date date) {
@@ -126,12 +122,7 @@ public abstract class AbstractPeriod implements Period {
 			return false;
 		}
 		if (getStartDate() == null) {
-			if (other.getStartDate() != null) {
-				return false;
-			}
-		} else if (!getStartDate().equals(other.getStartDate())) {
-			return false;
-		}
-		return true;
+			return other.getStartDate() == null;
+		} else return getStartDate().equals(other.getStartDate());
 	}
 }

@@ -7,7 +7,7 @@ For use with maven add this dependency.
     <dependency>
       <groupId>com.github.alvaro72</groupId>
       <artifactId>period</artifactId>
-      <version>0.8.2</version>
+      <version>0.9.23</version>
     </dependency>
 ```
 
