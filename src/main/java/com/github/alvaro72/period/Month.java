@@ -20,8 +20,8 @@ public final class Month extends AbstractPeriod {
 		this(new Date());
 	}
 	/**
-	 * Month from a date
-	 * @param date
+	 * Create a Month Object from a date
+	 * @param date source date
 	 */
 	public Month(final Date date) {
 		Calendar c = Calendar.getInstance();

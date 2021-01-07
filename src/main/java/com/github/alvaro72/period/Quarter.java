@@ -17,7 +17,7 @@ public final class Quarter extends AbstractPeriod {
     }
     /**
      * Quarter from a date.
-     * @param date
+     * @param date source date
      */
     public Quarter(final Date date) {
         Calendar c = Calendar.getInstance();
@@ -54,9 +54,9 @@ public final class Quarter extends AbstractPeriod {
 
     /**
      * Create a quarter of trimester and year.
-     * @param trimester
-     * @param year
-     * @return
+     * @param trimester number of trimester (1-4)
+     * @param year year
+     * @return Quarter object
      */
     public Quarter of(int trimester, int year) {
         Calendar cal = Calendar.getInstance();
