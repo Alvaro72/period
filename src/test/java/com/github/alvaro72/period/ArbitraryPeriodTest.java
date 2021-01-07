@@ -1,18 +1,18 @@
 package com.github.alvaro72.period;
 
-import static org.junit.Assert.*;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-import org.junit.Test;
 
 import com.github.alvaro72.period.ArbitraryPeriod;
 import com.github.alvaro72.period.Day;
 import com.github.alvaro72.period.Month;
 import com.github.alvaro72.period.Quarter;
 import com.github.alvaro72.period.Year;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ArbitraryPeriodTest {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -63,16 +63,16 @@ public class ArbitraryPeriodTest {
 		assertEquals(sdf.format(cal.getTime()), sdf.format(ap.getEndDate()));
 	}
 
-	@Test(expected=UnsupportedOperationException.class)
+	@Test
 	public final void testPrevious() {
 		ArbitraryPeriod ap = new ArbitraryPeriod(new Date(), new Date());
-		ap.previous();
+		assertThrows(UnsupportedOperationException.class, () -> ap.previous());
 	}
 
-	@Test(expected=UnsupportedOperationException.class)
+	@Test
 	public final void testNext() {
 		ArbitraryPeriod ap = new ArbitraryPeriod(new Date(), new Date());
-		ap.next();
+		assertThrows(UnsupportedOperationException.class, () -> ap.next());
 	}
 
 	@Test

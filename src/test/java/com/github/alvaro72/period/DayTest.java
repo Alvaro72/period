@@ -1,14 +1,14 @@
 package com.github.alvaro72.period;
 
-import static org.junit.Assert.*;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.junit.Test;
-
 import com.github.alvaro72.period.Day;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DayTest {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

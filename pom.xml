@@ -5,7 +5,7 @@
 
 	<groupId>com.github.alvaro72</groupId>
 	<artifactId>period</artifactId>
-	<version>0.9.34</version>
+	<version>0.9.35-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<description>Support library to deal with time periods (Week, Year, etc...).</description>
 
@@ -14,15 +14,15 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.version>4.12</junit.version>
+		<junit.version>5.5.2</junit.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>

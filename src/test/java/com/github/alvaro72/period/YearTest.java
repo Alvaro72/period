@@ -1,16 +1,16 @@
 package com.github.alvaro72.period;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
-
 import com.github.alvaro72.period.Semester;
 import com.github.alvaro72.period.Year;
+import org.junit.jupiter.api.Test;
 
 public class YearTest {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

@@ -1,14 +1,13 @@
 package com.github.alvaro72.period;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.github.alvaro72.period.Month;
 import com.github.alvaro72.period.Semester;
@@ -83,6 +82,5 @@ public class SemestrerTest {
 		Semester s2 = new Semester();
 		assertEquals(s1, s2);
 	}
-
 
 }
