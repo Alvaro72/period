@@ -8,28 +8,26 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import com.github.alvaro72.period.Semester;
-import com.github.alvaro72.period.Year;
 import org.junit.jupiter.api.Test;
 
 public class YearTest {
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	@Test
 	public final void testPrevious() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2018, 0, 1);
+		cal.set(2018, Calendar.JANUARY, 1);
 		Year y1 = new Year(cal.getTime());
-		cal.set(2017, 0, 1);
+		cal.set(2017, Calendar.JANUARY, 1);
 		assertEquals(sdf.format(cal.getTime()), sdf.format(y1.previous().getStartDate()));
 	}
 
 	@Test
 	public final void testNext() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2018, 0, 1);
+		cal.set(2018, Calendar.JANUARY, 1);
 		Year y1 = new Year(cal.getTime());
-		cal.set(2019, 0, 1);
+		cal.set(2019, Calendar.JANUARY, 1);
 		assertEquals(sdf.format(cal.getTime()), sdf.format(y1.next().getStartDate()));
 	}
 
@@ -44,7 +42,7 @@ public class YearTest {
 	@Test
 	public final void testOf() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(1997, 11, 31);
+		cal.set(1997, Calendar.DECEMBER, 31);
 		Year d = Year.of(1997);
 		assertEquals(sdf.format(cal.getTime()), sdf.format(d.getEndDate()));
 	}
@@ -52,7 +50,7 @@ public class YearTest {
 	@Test
 	public final void testGetStartDate() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2018, 0, 1);
+		cal.set(2018, Calendar.JANUARY, 1);
 		Year d = new Year(cal.getTime());
 		// Check immutability
 		d.getStartDate().setYear(1900);
@@ -62,7 +60,7 @@ public class YearTest {
 	@Test
 	public final void testGetEndDate() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2018, 11, 31);
+		cal.set(2018, Calendar.DECEMBER, 31);
 		Year d = new Year(cal.getTime());
 		// Check immutability
 		d.getStartDate().setYear(1900);

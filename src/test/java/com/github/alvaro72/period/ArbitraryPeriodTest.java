@@ -4,31 +4,25 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.github.alvaro72.period.ArbitraryPeriod;
-import com.github.alvaro72.period.Day;
-import com.github.alvaro72.period.Month;
-import com.github.alvaro72.period.Quarter;
-import com.github.alvaro72.period.Year;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ArbitraryPeriodTest {
-	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 
 	@Test
 	public final void testArbitraryPeriodDateDate() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2018, 11, 31);
+		cal.set(2018, Calendar.DECEMBER, 31);
 		ArbitraryPeriod ap = new ArbitraryPeriod(cal.getTime(), cal.getTime());
 	}
 
 	@Test
 	public final void testArbitraryPeriodPeriod() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2018, 11, 31);
+		cal.set(2018, Calendar.DECEMBER, 31);
 		Quarter t = new Quarter(cal.getTime());
 		ArbitraryPeriod ap = new ArbitraryPeriod(t);
 	}
@@ -36,7 +30,7 @@ public class ArbitraryPeriodTest {
 	@Test
 	public final void testArbitraryPeriodPeriodPeriod() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2018, 11, 31);
+		cal.set(2018, Calendar.DECEMBER, 31);
 		Month m = new Month(cal.getTime());
 		Year y = new Year(cal.getTime());
 		ArbitraryPeriod ap = new ArbitraryPeriod(m, y);
@@ -45,10 +39,10 @@ public class ArbitraryPeriodTest {
 	@Test
 	public final void testGetStartDate() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2018, 1, 31, 0, 0, 0);
+		cal.set(2018, Calendar.JANUARY, 31, 0, 0, 0);
 
 		Date startDate = cal.getTime();
-		cal.set(2018, 8, 31);
+		cal.set(2018, Calendar.AUGUST, 31);
 		ArbitraryPeriod ap = new ArbitraryPeriod(startDate, cal.getTime());
 		assertEquals(sdf.format(startDate), sdf.format(ap.getStartDate()));
 	}
@@ -56,9 +50,9 @@ public class ArbitraryPeriodTest {
 	@Test
 	public final void testGetEndDate() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2018, 1, 31);
+		cal.set(2018, Calendar.JANUARY, 31);
 		Date startDate = cal.getTime();
-		cal.set(2018, 8, 31);
+		cal.set(2018, Calendar.AUGUST, 31);
 		ArbitraryPeriod ap = new ArbitraryPeriod(startDate, cal.getTime());
 		assertEquals(sdf.format(cal.getTime()), sdf.format(ap.getEndDate()));
 	}
@@ -66,21 +60,21 @@ public class ArbitraryPeriodTest {
 	@Test
 	public final void testPrevious() {
 		ArbitraryPeriod ap = new ArbitraryPeriod(new Date(), new Date());
-		assertThrows(UnsupportedOperationException.class, () -> ap.previous());
+		assertThrows(UnsupportedOperationException.class, ap::previous);
 	}
 
 	@Test
 	public final void testNext() {
 		ArbitraryPeriod ap = new ArbitraryPeriod(new Date(), new Date());
-		assertThrows(UnsupportedOperationException.class, () -> ap.next());
+		assertThrows(UnsupportedOperationException.class, ap::next);
 	}
 
 	@Test
 	public final void testIsWithinDate() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2017, 3, 30);
+		cal.set(2017, Calendar.MARCH, 30);
 		ArbitraryPeriod ap = new ArbitraryPeriod(new Quarter(cal.getTime()));
-		assertEquals(true, ap.isWithin(cal.getTime()));
+		assertTrue( ap.isWithin(cal.getTime()) );
 	}
 
 	@Test
@@ -92,16 +86,16 @@ public class ArbitraryPeriodTest {
 	@Test
 	public final void testIsWithinPeriod() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2017, 3, 30);
+		cal.set(2017, Calendar.MARCH, 30);
 		ArbitraryPeriod ap = new ArbitraryPeriod(new Day(cal.getTime()));
 		ArbitraryPeriod ap2 = new ArbitraryPeriod(new Quarter(cal.getTime()));
-		assertEquals(true, ap2.isWithin(ap));
+		assertTrue(ap2.isWithin(ap));
 	}
 
 	@Test
 	public final void testEqualsObject() {
 		Calendar cal = Calendar.getInstance();
-		cal.set(2017, 3, 30);
+		cal.set(2017, Calendar.MARCH, 30);
 		ArbitraryPeriod ap = new ArbitraryPeriod(new Day(cal.getTime()));
 		ArbitraryPeriod ap2 = new ArbitraryPeriod(new Day(cal.getTime()));
 		assertEquals(ap, ap2);
